@@ -1,7 +1,8 @@
+
 <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
     New Product
 </button>
-
+<h2><strong>You are in a page that You will work with API's</strong></h2><br>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -10,7 +11,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/addnew" method="post">
+                <form action="/apiaddnew" method="post">
                     <div class="mb-3">
                         <label for="product" class="form-label">Product Name</label>
                         <input type="text" name="name" class="form-control" id="product">

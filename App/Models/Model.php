@@ -37,7 +37,7 @@ abstract class Model implements Crud
     {
         $columns = implode(", ", array_keys($data));
         $values = "'" . implode("','", array_values($data)) . "'";
-        $sql = "INSERT INTO " . static::$table . " ({$columns}) VALUES ({$values})";
+        $sql = "INSERT INTO " . $this->table . " ({$columns}) VALUES ({$values})";
         $result = $this->connection()->prepare($sql)->execute();
         if ($result) {
             return true;
@@ -47,7 +47,7 @@ abstract class Model implements Crud
 
     public function delete($id)
     {
-        $sql = "DELETE FROM " . static::$table . " WHERE id = :id";
+        $sql = "DELETE FROM " . $this->table . " WHERE id = :id";
         $result = $this->connection()->prepare($sql);
         $result->bindParam(":id", $id);
         if ($result->execute()) {
@@ -65,7 +65,7 @@ abstract class Model implements Crud
         }
         $setValue = rtrim($setValue, ",");
 
-        $result = "UPDATE " . static::$table . " SET {$setValue} WHERE id = {$id}";
+        $result = "UPDATE " . $this->table . " SET {$setValue} WHERE id = {$id}";
         $stmt = $this->connection()->prepare($result);
 
         return $stmt->execute();
