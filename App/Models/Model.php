@@ -1,18 +1,22 @@
 <?php
+
 namespace App\Models;
+
 use App\Models\Crud;
 use PDO;
 
-abstract class Model implements Crud{
+abstract class Model implements Crud
+{
 
     public $table;
 
     public function connection()
     {
-        return new PDO("mysql:host=localhost;dbname=product",'root','root');
+        return new PDO("mysql:host=localhost;dbname=products", 'root', 'root');
     }
 
-    public function all(){
+    public function all()
+    {
         $sql = "SELECT * FROM " . $this->table;
         $result = $this->connection()->query($sql);
         return $result->fetchAll(PDO::FETCH_OBJ);
@@ -66,7 +70,4 @@ abstract class Model implements Crud{
 
         return $stmt->execute();
     }
-} 
-
-
-?>
+}
